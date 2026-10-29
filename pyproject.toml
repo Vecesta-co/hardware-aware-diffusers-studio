@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hardware-aware-diffusers-studio"
+version = "1.0.0"
+description = "Hardware-aware Stable Diffusion playground with automatic VRAM scaling and CPU fallback by Vecesta.co."
+readme = "README.md"
+authors = [
+  { name = "Vecesta.co", email = "vecesta.co@gmail.com" }
+]
+license = { text = "MIT" }
+requires-python = ">=3.10"
+keywords = [
+  "stable-diffusion",
+  "diffusers",
+  "image-generation",
+  "hardware-aware",
+  "cpu-fallback",
+  "vecesta"
+]
+dependencies = [
+  "pillow>=10.0.0",
+  "numpy>=1.24.0",
+  "pydantic>=2.0.0",
+  "colorama>=0.4.6",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0.0",
+  "pytest-cov>=4.0.0",
+]
+accelerate = [
+  "torch>=2.0.0",
+  "diffusers>=0.25.0",
+  "accelerate>=0.25.0",
+]
+
+[project.scripts]
+hardware-aware-diffusers-studio = "src.cli:main"
+hds = "src.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v"
